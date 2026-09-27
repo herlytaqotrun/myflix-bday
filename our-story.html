@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story — AuliaFlix 💕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="story.css">
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar-container">
+  <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+<!-- Back Button -->
+<a href="index.html" class="back-btn">← Kembali</a>
+
+<!-- Music Toggle -->
+<button class="music-btn" id="music-btn" title="Putar Musik">🎵</button>
+
+<!-- Background Music: taruh file di assets/audio/our-song.mp3 -->
+<audio id="bg-music" loop>
+  <source src="assets/audio/our-song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Auto-play toggle -->
+<button class="auto-btn" id="auto-btn" title="Auto Slide">⏸</button>
+
+<!-- ======= SLIDES ======= -->
+<div class="slides-wrap" id="slides-wrap">
+
+  <!-- SLIDE 1 -->
+  <div class="slide active" data-index="0">
+    <div class="slide-bg" style="--photo:url('assets/photos/story1.jpg')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <span class="chapter-label">Chapter 01</span>
+      <h2 class="slide-title">Awal dari Segalanya</h2>
+      <p class="slide-quote">"Hari itu aku belum tahu, bahwa pertemuan kita akan mengubah segalanya..."</p>
+      <p class="slide-caption">Setiap kisah besar dimulai dari satu momen kecil yang tak terduga. Dan itulah awal dari kisah kita.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide" data-index="1">
+    <div class="slide-bg" style="--photo:url('assets/photos/story2.jpg')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <span class="chapter-label">Chapter 02</span>
+      <h2 class="slide-title">Hari-Hari Bersamamu</h2>
+      <p class="slide-quote">"Bersama kamu, bahkan hal biasa pun terasa luar biasa."</p>
+      <p class="slide-caption">Di setiap hari yang kita lalui bersama, aku menemukan semakin banyak alasan untuk bersyukur.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide" data-index="2">
+    <div class="slide-bg" style="--photo:url('assets/photos/story3.jpg')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <span class="chapter-label">Chapter 03</span>
+      <h2 class="slide-title">Petualangan Kita</h2>
+      <p class="slide-quote">"Setiap perjalanan bersamamu adalah kenangan yang ingin aku simpan selamanya."</p>
+      <p class="slide-caption">Dari tempat-tempat yang kita kunjungi bersama, hingga perjalanan kecil yang tak terlupakan.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide" data-index="3">
+    <div class="slide-bg" style="--photo:url('assets/photos/story4.jpg')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <span class="chapter-label">Chapter 04</span>
+      <h2 class="slide-title">Kamu adalah Rumahku</h2>
+      <p class="slide-quote">"Di setiap penat dan lelahku, ada kamu yang selalu membuatku merasa di rumah."</p>
+      <p class="slide-caption">Rumah bukan sekadar tempat — rumah adalah perasaan yang kamu hadirkan di setiap saat bersamamu.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide" data-index="4">
+    <div class="slide-bg" style="--photo:url('assets/photos/story5.jpg')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <span class="chapter-label">Chapter 05</span>
+      <h2 class="slide-title">Yang Aku Suka dari Kamu</h2>
+      <p class="slide-quote">"Caramu tersenyum, caramu peduli — semuanya sempurna dengan caranya sendiri."</p>
+      <p class="slide-caption">Ada begitu banyak hal dari dirimu yang aku kagumi setiap harinya. Dan aku tak pernah bisa berhenti kagum.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide" data-index="5">
+    <div class="slide-bg" style="--photo:url('assets/photos/story6.jpg')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <span class="chapter-label">Chapter 06</span>
+      <h2 class="slide-title">Masa Depan yang Kita Impikan</h2>
+      <p class="slide-quote">"Aku ingin menulis bab-bab selanjutnya bersamamu — selamanya."</p>
+      <p class="slide-caption">Kisah kita belum selesai. Masih banyak halaman kosong yang menunggu untuk kita isi bersama.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: BIRTHDAY FINALE -->
+  <div class="slide finale-slide" data-index="6">
+    <div class="finale-overlay"></div>
+    <div class="slide-content finale-content">
+      <div class="finale-emoji">🎉🎂🎊</div>
+      <span class="chapter-label gold-label">EPILOGUE</span>
+      <h1 class="finale-title">Selamat Ulang Tahun ke-30</h1>
+      <h2 class="finale-name">Mas Aulia Fauzia Rakhman</h2>
+      <div class="finale-msg">
+        <p>Di hari yang paling istimewa ini, aku ingin kamu tahu:</p>
+        <p class="finale-highlight">"Kamu adalah hal terbaik yang pernah terjadi padaku."</p>
+        <p>Semoga di usia 30 ini dan seterusnya, hidupmu selalu dipenuhi kebahagiaan, kesehatan, dan semua hal indah yang kamu impikan.</p>
+        <p>Aku akan selalu ada di sini, mendukungmu dan mencintaimu.</p>
+      </div>
+      <div class="finale-from">
+        Dengan sepenuh cinta,<br>
+        <strong>Herlyta Qotrun Nada</strong> 💕
+      </div>
+      <a href="index.html" class="finale-back">⬅ Kembali ke AuliaFlix</a>
+    </div>
+  </div>
+
+</div><!-- end slides-wrap -->
+
+<!-- Navigation Controls -->
+<div class="story-nav">
+  <button class="nav-btn" id="nav-prev" disabled>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+  </button>
+  <div class="slide-dots" id="slide-dots"></div>
+  <button class="nav-btn" id="nav-next">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+  </button>
+</div>
+
+<script src="story.js"></script>
+</body>
+</html>

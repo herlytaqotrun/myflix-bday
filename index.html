@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYFLIX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- ===== PROFILE SCREEN ===== -->
+<div id="ps-screen">
+
+  <!-- Phase 1: Logo Splash -->
+  <div id="ps-splash">
+    <div class="ps-big-logo">M</div>
+  </div>
+
+  <!-- Phase 2: Who's Watching -->
+  <div id="ps-watching" style="display:none;">
+    <div class="ps-top-logo">MYFLIX</div>
+    <h1 class="ps-heading">Who's Watching?</h1>
+    <div class="ps-profiles-row">
+      <div class="ps-profile">
+        <div class="ps-avatar" style="background:linear-gradient(135deg,#6b0000,#e50914);">A</div>
+        <p class="ps-pname">Aulia</p>
+      </div>
+      <div class="ps-profile">
+        <div class="ps-avatar" style="background:linear-gradient(135deg,#880e4f,#ff6b9d);">H</div>
+        <p class="ps-pname">Herlyta</p>
+      </div>
+      <div class="ps-profile">
+        <div class="ps-avatar ps-av-us" style="background:linear-gradient(135deg,#3a006e,#9c27b0);">
+          <svg width="50" height="50" viewBox="0 0 24 24" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+        <p class="ps-pname">Us</p>
+      </div>
+    </div>
+    <button class="ps-manage-btn">Manage Profiles</button>
+  </div>
+
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-left">
+    <div class="nav-logo">MYFLIX</div>
+    <ul class="nav-links">
+      <li class="nav-active">Home</li>
+      <li>Shows</li>
+      <li>Movies</li>
+      <li>Genres</li>
+      <li>New &amp; Popular</li>
+      <li>My List</li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <button class="nav-icon-btn" title="Search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.5 6.5 0 1 0 14 15.5l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    </button>
+    <button class="nav-icon-btn" title="Notifications">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+    </button>
+    <div class="nav-profile">
+      <div class="profile-avatar">H</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  
+  <div class="hero-fallback" id="hero-fallback"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">MYFLIX ORIGINAL</div>
+    <h1 class="hero-title">BDAY LOVE</h1>
+    <div class="hero-tagline">To my beloved boyfriend, Aulia Fauzia Rakhman.</div>
+    <div class="hero-meta-row">
+      <span class="match-pct">99% Match</span>
+      <span class="hero-year">2026</span>
+      <span class="hero-rating">TV-NR</span>
+    </div>
+    <p class="hero-desc">On your 30th birthday, I want you to know that every moment we share is a scene I never want to end. You are my favorite story — and this is just the beginning.</p>
+    <div class="hero-buttons">
+      <button class="btn btn-play" id="openVideoBtn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Play
+      </button>
+      <button class="btn btn-info" id="openMoreInfoBtn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        More Info
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTENT ===== -->
+<main class="content-area">
+
+    <!-- Row: Today's Top Picks -->
+  <section class="content-row reveal">
+    <h2 class="row-heading">Today's Top Picks For You</h2>
+    <div class="row-scroll-container"><div class="cards-row">
+      <div class="photo-card poster" style="--pu:url('assets/photos/poster1.jpg')" data-photo="assets/photos/poster1.jpg" data-caption="Different Days, Same Favorite Person.">
+        <div class="card-info"><h4>Just You</h4><p>Romance &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/poster2.jpg')" data-photo="assets/photos/poster2.jpg" data-caption="Every Place Feels Like Home With You.">
+        <div class="card-info"><h4>Wherever With You</h4><p>Adventure &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/poster3.jpg')" data-photo="assets/photos/poster3.jpg" data-caption="Same Silly Faces, Forever Us.">
+        <div class="card-info"><h4>Sayang, Always You</h4><p>Romance &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/poster4.jpg')" data-photo="assets/photos/poster4.jpg" data-caption="Some People Make Life Feel So Much Brighter.">
+        <div class="card-info"><h4>My Favorite Person</h4><p>Romance &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/poster5.jpg')" data-photo="assets/photos/poster5.jpg" data-caption="A Love Story That Keeps Getting Better.">
+        <div class="card-info"><h4>Our Story</h4><p>Drama &bull; 2026</p></div>
+      </div>
+            <div class="photo-card poster" style="--pu:url('assets/photos/poster6.jpg')" data-photo="assets/photos/poster6.jpg" data-caption="Same Places. Different Days. Always You.">
+        <div class="card-info"><h4>My Bday Love</h4><p>Romance &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster coming-soon-card">
+        <div class="cs-inner">
+          <span class="cs-tag">COMING SOON</span>
+          <h4>Untitled</h4>
+          <p>Our Next Chapter</p>
+        </div>
+        <div class="card-info"><h4>Our Next Chapter</h4><p>Coming Soon</p></div>
+      </div>
+    </div></div>
+  </section>
+
+        <!-- Row: Top 10 -->
+  <section class="content-row reveal">
+    <h2 class="row-heading">Top 6 in Indonesia Today</h2>
+    <div class="row-scroll-container"><div class="cards-row top10-row">
+      <div class="photo-card t10 poster" data-num="1" style="--pu:url('assets/photos/top1.jpg')" data-photo="assets/photos/top1.jpg" data-caption="Aulia Fauzia Rakhman, S.H. — The day that made everyone so incredibly proud.">
+        <div class="card-info"><h4>Aulia Fauzia Rakhman, S.H.</h4><p>28 September &bull; A proud moment</p></div>
+      </div>
+      <div class="photo-card t10 poster" data-num="2" style="--pu:url('assets/photos/top2.jpg')" data-photo="assets/photos/top2.jpg" data-caption="Good Things Take Time. Same person, different chapters. Still growing, still glowing.">
+        <div class="card-info"><h4>Good Things Take Time</h4><p>Same person, different chapter</p></div>
+      </div>
+      <div class="photo-card t10 poster" data-num="3" style="--pu:url('assets/photos/top3.jpg')" data-photo="assets/photos/top3.jpg" data-caption="Finding peace in every new place — always the coolest wherever he goes.">
+        <div class="card-info"><h4>Somewhere Beautiful</h4><p>Beda Ruang &bull; 2026</p></div>
+      </div>
+      <div class="photo-card t10 poster" data-num="4" style="--pu:url('assets/photos/top4.jpg')" data-photo="assets/photos/top4.jpg" data-caption="Golden hour, good food, good vibes. Living life the right way.">
+        <div class="card-info"><h4>Golden Hour Vibes</h4><p>Living slowly, loving deeply</p></div>
+      </div>
+      <div class="photo-card t10 poster" data-num="5" style="--pu:url('assets/photos/top5.jpg')" data-photo="assets/photos/top5.jpg" data-caption="Quiet, confident, and completely himself — always.">
+        <div class="card-info"><h4>Just Him</h4><p>Effortlessly cool &bull; 2026</p></div>
+      </div>
+      <div class="photo-card t10 poster" data-num="6" style="--pu:url('assets/photos/top6.jpg')" data-photo="assets/photos/top6.jpg" data-caption="Laughing his way through life — and that is exactly why I love him.">
+        <div class="card-info"><h4>Pure Joy</h4><p>His best self &bull; always</p></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Row: Trending Now -->
+  <section class="content-row reveal">
+    <h2 class="row-heading">Trending Now</h2>
+    <div class="row-scroll-container"><div class="cards-row">
+      <div class="photo-card poster" style="--pu:url('assets/photos/trend1.jpg')" data-photo="assets/photos/trend1.jpg" data-caption="The adventurer — always up for something new.">
+        <div class="card-info"><h4>Adventure Mode</h4><p>Documentary &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/trend2.jpg')" data-photo="assets/photos/trend2.jpg" data-caption="Under the open sky, living life to the fullest.">
+        <div class="card-info"><h4>Into the Wild</h4><p>Adventure &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/trend3.jpg')" data-photo="assets/photos/trend3.jpg" data-caption="The goofiest, most lovable person I know.">
+        <div class="card-info"><h4>Being Him</h4><p>Comedy &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/trend4.jpg')" data-photo="assets/photos/trend4.jpg" data-caption="From this little boy... to the man you have become. I am so proud of you.">
+        <div class="card-info"><h4>The Beginning</h4><p>Drama &bull; Origin Story</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/trend5.jpg')" data-photo="assets/photos/trend5.jpg" data-caption="Hardworking, dedicated — always giving his very best.">
+        <div class="card-info"><h4>The Real One</h4><p>Biography &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/trend6.jpg')" data-photo="assets/photos/trend6.jpg" data-caption="Even in a hoodie, still the most adorable person.">
+        <div class="card-info"><h4>Cozy Mode</h4><p>Slice of Life &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/trend7.jpg')" data-photo="assets/photos/trend7.jpg" data-caption="The way he makes every moment feel fun and alive.">
+        <div class="card-info"><h4>Main Character</h4><p>Comedy &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/trend8.jpg')" data-photo="assets/photos/trend8.jpg" data-caption="Unbothered, unbothered, completely unbothered.">
+        <div class="card-info"><h4>Unbothered</h4><p>Drama &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/trend9.jpg')" data-photo="assets/photos/trend9.jpg" data-caption="That smile — the one that makes everything okay.">
+        <div class="card-info"><h4>That Smile</h4><p>Romance &bull; 2026</p></div>
+      </div>
+      <div class="photo-card poster" style="--pu:url('assets/photos/trend10.jpg')" data-photo="assets/photos/trend10.jpg" data-caption="Cool, calm, and always himself — no matter where he is.">
+        <div class="card-info"><h4>Always Cool</h4><p>Adventure &bull; 2026</p></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Row: New on MYFLIX -->
+  <section class="content-row reveal">
+    <h2 class="row-heading">New on MYFLIX</h2>
+    <div class="row-scroll-container"><div class="cards-row">
+      <div class="love-card"><div class="lci"><div class="love-tag">Romance</div><h3>Home</h3><p>You are the home I always want to return to. In every exhaustion and weariness, your smile is the reason I keep going.</p></div></div>
+      <div class="love-card"><div class="lci"><div class="love-tag">Drama</div><h3>What I Love About You</h3><p>The way you laugh, the way you care for people around you — everything makes me fall in love with you every single day.</p></div></div>
+      <div class="love-card"><div class="lci"><div class="love-tag">Original</div><h3>What I Want to Say</h3><p>Thank you for being here. Thank you for being you. I am incredibly lucky to know you and to love you.</p></div></div>
+      <div class="love-card"><div class="lci"><div class="love-tag">Series</div><h3>My Promise</h3><p>I promise to always be there for you — on easy days and on the hard ones. Because you are always worth fighting for.</p></div></div>
+      <div class="love-card"><div class="lci"><div class="love-tag">Special</div><h3>You Make Me</h3><p>...want to be the best version of myself. Not because I have to, but because you truly deserve the very best.</p></div></div>
+    </div></div>
+  </section>
+
+  <!-- Birthday Special -->
+  <section class="bday-section reveal">
+    <div class="bday-bg30">30</div>
+    <div class="bday-wrap">
+      <span class="bday-tag">Special Feature</span>
+      <h2 class="bday-title">Happy 30th Birthday,<br>Aulia Fauzia Rakhman</h2>
+      <p class="bday-desc">On this very special day, I want you to know that you are the most beautiful thing that has ever happened to me. May your 30s be filled with joy, health, and everything you have ever dreamed of. I will always be here, by your side.</p>
+      <p class="bday-from">With all my love &mdash; Herlyta Qotrun Nada</p>
+      <div class="reasons-wrap">
+        <h3 class="reasons-heading">30 Reasons Why</h3>
+        <div class="reasons-grid" id="reasons-grid"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== MORE INFO MODAL ===== -->
+<div class="mi-modal" id="mi-modal">
+  <div class="mi-scrim" id="mi-scrim"></div>
+  <div class="mi-box" id="mi-box">
+    <button class="mi-close-btn" id="mi-close-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+    <div class="mi-backdrop">
+      
+      <div class="mi-bfallback"></div>
+      <div class="mi-boverlay"></div>
+      <div class="mi-bcontent">
+        <h2 class="mi-stitle">BDAY LOVE</h2>
+        <div class="mi-btns">
+          <button class="mi-play-btn" id="mi-play-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Play
+          </button>
+          <button class="mi-circ-btn" title="Add to My List">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          </button>
+          <button class="mi-circ-btn mi-heart" title="Love">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="mi-body">
+      <div class="mi-left">
+        <div class="mi-meta">
+          <span class="mi-match">99% Match</span>
+          <span class="mi-yr">2026</span>
+          <span class="mi-bd">HD</span>
+          <span class="mi-rt">TV-NR</span>
+        </div>
+        <p class="mi-desc">Happy Birthday, Aulia Fauzia Rakhman. Today you turn 30 — and I want you to know that every single day I get to spend knowing you is a gift I never take for granted. You are kind, strong, thoughtful, and endlessly inspiring. Here's to your 30s — may it be everything you deserve and more.<br><br>I love you more than words can say.</p>
+        <div class="mi-tagsrow">
+          <span>Heartwarming</span><span>Romantic</span><span>Birthday Special</span>
+        </div>
+        <a href="our-story.html" class="mi-story-link">View Full Story &rsaquo;</a>
+      </div>
+      <div class="mi-right">
+        <p class="mi-cl"><span class="mi-clabel">Cast:</span> Aulia Fauzia Rakhman</p>
+        <p class="mi-cl"><span class="mi-clabel">Creator:</span> Herlyta Qotrun Nada</p>
+        <p class="mi-cl"><span class="mi-clabel">Genres:</span> Romance, Drama, Love Story</p>
+        <p class="mi-cl"><span class="mi-clabel">This show is:</span> Deeply romantic, Beautiful</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== VIDEO MODAL ===== -->
+<div class="video-modal" id="video-modal">
+  <div class="vm-overlay" id="vm-overlay"></div>
+  <div class="vm-content">
+    <button class="vm-close" id="vm-close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+    <video id="main-video" controls>
+      <source src="assets/videos/full-video.mp4" type="video/mp4">
+    </video>
+    <div class="vm-bar">BDAY LOVE &mdash; Full Feature</div>
+  </div>
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-overlay" id="lb-overlay"></div>
+  <div class="lb-content">
+    <button class="lb-close" id="lb-close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+    <img id="lb-img" src="" alt="">
+    <div class="lb-caption" id="lb-caption"></div>
+  </div>
+</div>
+
+<audio id="bg-music" loop preload="auto">
+  <source src="assets/audio/our-song.m4a" type="audio/mp4">
+  <source src="assets/audio/our-song.mp3" type="audio/mpeg">
+</audio>
+<div class="music-player" id="music-player">
+  <div class="music-label" id="music-label">Click to play</div>
+  <button class="music-toggle" id="music-toggle" title="Toggle Music">
+    <svg id="music-icon-play" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+    <svg id="music-icon-pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
