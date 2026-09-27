@@ -516,3 +516,63 @@ body{background:var(--dark);color:var(--white);font-family:var(--fb);overflow-x:
   .ps-avatar { width: 100px; height: 100px; font-size: 3rem; }
   .ps-profiles-row { gap: 18px; }
 }
+
+/* ========================
+   MOBILE HERO FIX
+   ======================== */
+@media (max-width: 768px) {
+
+  /* Hero - adjust height & padding for mobile */
+  .hero {
+    min-height: 100svh;
+    padding-bottom: 60px;
+    align-items: flex-end;
+  }
+
+  /* Show image properly on mobile — center on the couple's faces */
+  .hero-fallback {
+    background-position: 55% center !important;
+    background-size: cover !important;
+  }
+
+  /* On mobile the left-to-right gradient hides the image entirely.
+     Switch to a top-bottom gradient so photo shows through in the middle */
+  .hero-overlay {
+    background:
+      linear-gradient(
+        to top,
+        rgba(20,20,20,1)   0%,
+        rgba(20,20,20,.85) 18%,
+        rgba(20,20,20,.35) 45%,
+        rgba(0,0,0,.15)    70%,
+        transparent        100%
+      ) !important;
+  }
+
+  /* Content — full width with smaller padding */
+  .hero-content {
+    padding: 0 22px;
+    max-width: 100%;
+  }
+
+  /* Smaller title on very narrow screens */
+  .hero-title {
+    font-size: clamp(2.6rem, 14vw, 4.5rem);
+    letter-spacing: 2px;
+  }
+
+  .hero-tagline {
+    font-size: .95rem;
+  }
+
+  .hero-desc {
+    font-size: .85rem;
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 400px) {
+  .hero-content { padding: 0 16px; }
+  .hero-title   { font-size: 2.4rem; }
+}
